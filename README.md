@@ -8,3 +8,6 @@
 - Project - ID Card Parser
 - Project - Sparkline Basics
 - Project - Google Translate
+
+## Projects02 - SQL Database
+- Projects Pizza Restaurant
