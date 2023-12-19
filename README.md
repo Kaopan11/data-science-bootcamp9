@@ -19,3 +19,9 @@
 ## Projects04 - Data Transformation
 - Projects Ask 5 questions about this dataset(flights)
 - Projects Build Database On PostgreSQL server by use pizza restaurant
+
+## Projects05 - Data Visualization
+- Projects Build Rmarkdown 5 ggplot charts
+- Projects Build mini dashboard too Google Sheets Use Free Fire vs. PubG Dataset
+
+
