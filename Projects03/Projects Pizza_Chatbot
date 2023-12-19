@@ -1,0 +1,85 @@
+## (Pizza oder)
+# Create a function to greet the user and ask for their name
+greet_user <- function() {
+  name <- readline("What is your name? ")
+  cat("Hello,", name, "!\n")
+  cat("Welcome to our pizza ordering system.\n")
+}
+
+# Create a function to display the pizza menu with prices
+display_menu <- function() {
+  cat("Here is our pizza menu:\n")
+  cat("1. Hawaiian - $12.99\n")
+  cat("2. Cheese - $10.99\n")
+  cat("3. Pepperoni - $11.99\n")
+  cat("4. Supreme - $14.99\n")
+  cat("5. Build your own - $10.99 + $1.00 per topping\n")
+}
+
+# Create a function to take the user's pizza order and calculate the total price
+take_order <- function() {
+  display_menu()
+  pizza_choice <- as.numeric(readline("What kind of pizza would you like to order? (Enter a number 1-5): "))
+  while (pizza_choice < 1 || pizza_choice > 5) {
+    cat("Please enter a valid number (1-5): ")
+    pizza_choice <- as.numeric(readline())
+  }
+
+  if (pizza_choice == 5) {
+    # Build your own pizza
+    toppings <- c()
+    base_price <- 10.99
+    topping_price <- 1.00
+
+    cat("Please select your toppings:\n")
+    cat("1. Pepperoni - $1.00\n")
+    cat("2. Sausage - $1.00\n")
+    cat("3. Onions - $0.50\n")
+    cat("4. Mushrooms - $0.50\n")
+    cat("5. Green peppers - $0.50\n")
+    cat("6. Extra cheese - $1.00\n")
+
+    topping_choice <- as.numeric(readline("Enter the number of the topping you want, or 0 to finish adding toppings: "))
+    while (topping_choice != 0) {
+      if (topping_choice < 1 || topping_choice > 6) {
+        cat("Please enter a valid number (1-6): ")
+        topping_choice <- as.numeric(readline())
+      } else {
+        toppings <- append(toppings, topping_choice)
+        total_price <- base_price + topping_price * length(toppings)
+        cat("You have added ", toppings[length(toppings)], " to your pizza.\n")
+        cat("Current order total: $", total_price, "\n")
+        topping_choice <- as.numeric(readline("Enter the number of the topping you want, or 0 to finish adding toppings: "))
+      }
+    }
+
+    cat("Your custom pizza includes the following toppings:\n")
+    for (topping in toppings) {
+      switch(topping,
+        "1" = "pepperoni",
+        "2" = "sausage",
+        "3" = "onions",
+        "4" = "mushrooms",
+        "5" = "green peppers",
+        "6" = "extra cheese"
+      )
+    }
+  } else {
+    # Pre-defined pizza
+    pizza_prices <- c(12.99, 10.99, 11.99, 14.99)
+    pizza <- switch(pizza_choice,
+      "1" = "Hawaiian",
+      "2" = "Cheese",
+      "3" = "Pepperoni",
+      "4" = "Supreme"
+    )
+    total_price <- pizza_prices[pizza_choice]
+    cat("You have ordered a", pizza, "pizza for $", total_price, ".\n")
+  }
+
+  cat("Thank you for your order!\n")
+}
+
+# Run the chatbot
+greet_user()
+take_order()
