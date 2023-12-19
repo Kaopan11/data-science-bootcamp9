@@ -15,3 +15,7 @@
 ## Projects03 - Programming Foundation
 - Projects Rock, paper, scissors Game
 - Projects Pizza_Chatbot
+
+## Projects04 - Data Transformation
+- Projects Ask 5 questions about this dataset(flights)
+- Projects Build Database On PostgreSQL server by use pizza restaurant
