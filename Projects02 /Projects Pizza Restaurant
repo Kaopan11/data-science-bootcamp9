@@ -1,0 +1,90 @@
+-- table 1
+create table customers(
+  id int,
+  name text,
+  taste text
+);
+
+insert into customers values
+  (1, 'kaopan', 'spicy'),
+  (2, 'noina', 'Medium spicy'),
+  (3, 'Anna', 'Very spicy');
+
+-- table 2
+create table orders (
+  id int,
+  name text,
+  taste text
+);
+
+insert into orders values
+  (1, 'kaopan', 'spicy'),
+  (2, 'noina', 'Medium spicy' ),
+  (3, 'Anna', 'Very spicy');
+
+-- table 3
+create table menus_pizza (
+  id int,
+  name text,
+  taste text
+);
+
+insert into menus_pizza values
+  (1, 'Aloha', 'spicy'),
+  (2, 'Angry Chicken', 'Medium spicy'),
+  (3, 'Cheesy Bacon Crab Stick', 'Very spicy');
+
+-- table 4
+create table price (
+  id int,
+  name text,
+  taste text,
+  price int
+);
+
+insert into price values
+  (1, 'Aloha', 'spicy', 150),
+  (2, 'Angry Chicken', 'Medium spicy', 250),
+  (3, 'Cheesy Bacon Crab Stick', 'Very spicy', 350);
+
+
+-- Case_table 1
+.mod box
+select * from customers;
+
+-- Case_table 2
+.mod box
+select * from orders;
+
+-- Case_table 3
+select * from menus_pizza;
+
+-- Case_table 4
+select * from price;
+
+-- Case_join  
+.mod box
+SELECT 
+  c.id, 
+  c.name, 
+  c.taste, 
+  mp.name AS pizza_name
+FROM customers AS c
+JOIN menus_pizza AS mp,
+ON c.taste = mp.taste;
+
+-- Case_Subqeries
+.mod box
+SELECT id, name
+from (select * from menus_pizza )
+where name = 'Aloha';
+
+-- Case_Aggregate
+.mod box
+select 
+  count(*) AS pizza_count,
+  AVG(price) AS AVG_price,
+  SUM(price) AS SUM_price,
+  MIN(price) AS MIN_price,
+  MAX(price) AS MAX_price
+from price;
