@@ -1,0 +1,86 @@
+# Q1. The most flights Origin
+flights %>%
+  select(origin) %>%
+  count(origin) %>%
+  arrange(desc(n))
+
+# Answer Q1.
+# A tibble: 3 × 2
+  origin      n
+  <chr>   <int>
+1 EWR    120835
+2 JFK    111279
+3 LGA    104662
+
+
+# Q2. The most flights destination
+flights %>%
+  select(dest) %>%
+  count(dest) %>%
+  arrange(desc(n)) %>%
+  head(5)
+
+# Answer Q2.
+# A tibble: 5 × 2
+  dest      n
+  <chr> <int>
+1 ORD   17283
+2 ATL   17215
+3 LAX   16174
+4 BOS   15508
+5 MCO   14082
+
+
+# Q3. The most flights delay
+flights %>%
+  select(dep_delay) %>%
+  count(dep_delay) %>%
+  arrange(desc(n)) %>%
+  head(5)
+
+# Answer Q3.
+# A tibble: 5 × 2
+  dep_delay     n
+      <dbl> <int>
+1        -5 24821
+2        -4 24619
+3        -3 24218
+4        -2 21516
+5        -6 20701
+
+
+# Q4. The flights to use hour and minute to go destination
+flights %>%
+  select(flight, dest, hour, minute) %>%
+  filter(hour >= 9, minute >= 35 ) %>%
+  count(flight ,dest,) %>%
+  arrange(desc(n)) %>%
+  head(5)
+
+
+# Answer Q4.
+# A tibble: 5 × 3
+  flight dest      n
+   <int> <chr> <int>
+1    413 LAX     365
+2    117 LAX     364
+3   1131 DTW     363
+4    251 LAS     358
+5   1073 MIA     356
+
+
+# Q5. random sampling flights carrier
+flights %>%
+  sample_n(5) %>%
+  select(carrier)
+
+# Answer Q5.
+# A tibble: 5 × 1
+  carrier
+  <chr>  
+1 B6     
+2 DL     
+3 AA     
+4 EV     
+5 UA
+
