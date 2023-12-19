@@ -11,3 +11,7 @@
 
 ## Projects02 - SQL Database
 - Projects Pizza Restaurant
+
+## Projects03 - Programming Foundation
+- Projects Rock, paper, scissors Game
+- Projects Pizza_Chatbot
