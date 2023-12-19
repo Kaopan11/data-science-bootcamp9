@@ -1,4 +1,4 @@
-# My Portfolio Data analyst
+# My Portfolio Data Analyst
 
 ## Projects01 - Google Sheets
 - Conditional Formatting
