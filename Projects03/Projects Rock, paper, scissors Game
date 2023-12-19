@@ -1,0 +1,43 @@
+game <- function() {
+        print("Hello, welcome to the game!")
+        username <- readline("What's your name:")
+        print("Let's play game")
+        hands <- c("hammer", "scissor", "paper")
+
+        user_scores <- 0
+        comp_scores <- 0
+        count <- 0
+    while (count < 3 ){
+        comp_hand <- sample(hands,1)
+        user_hand <- readline("Choose your hand:")
+        print(paste("your hand", user_hand))
+        print(paste("comp_hand", comp_hand))
+
+    if ( user_hand == "out") {
+        break
+    }
+
+    if (user_hand == comp_hand){
+        print("Draw")}
+
+    else if ((user_hand == "hammer" & comp_hand == "scissor") |
+              (user_hand == "hammer" & comp_hand == "hammer") |
+              (user_hand == "paper" & comp_hand == "hammer")) {
+              user_scores = user_scores + 1
+              print("user win!!") }
+        else {
+        comp_scores = comp_scores + 1
+        print("comp lose") }
+
+    count = count + 1 }
+    scores = paste("user_scores:comp_scores= ", user_scores, ":", comp_scores)
+    print(scores)
+
+        if(user_scores > comp_scores) {
+        print("good good good")
+        }
+        else{
+        (user_scores < comp_scores)
+        print("Try agian go go go!!")
+        }
+    }
