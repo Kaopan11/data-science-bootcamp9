@@ -1,6 +1,6 @@
 # My portfolio Data analyst
 
-## Projects01 - google sheets
+## Projects01 - Google Sheets
 - Conditional Formatting
 - Project Dynamic Query
 - Enriching Our Data with VLOOKUP
