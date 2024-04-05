@@ -29,6 +29,7 @@ starwar_data = [
     ["Leia Organa", 150, 49, "female", "https://swapi.py4e.com/api/planets/2/"],
 ]
 
+# convert to csv file
 # use with open in build a new file
 # "w" is write a new file
 # "r" is read file
