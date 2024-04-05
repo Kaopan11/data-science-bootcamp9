@@ -1,0 +1,35 @@
+class DataAnalyst():
+    def __init__(self, name, company, skill):
+        self.name = name
+        self.company = company
+        self.skill = skill
+
+    def hello(self):
+        print(f"{self.name} work at {self.company} and my skill is {self.skill}")
+
+    def work1(self):
+        print("I'm still working on SQL")
+
+    def work2(self):
+        print("I'm create visualization on looker studio")
+
+    def mydream(self):
+        print("I want to be One who learns endlessly")
+
+kaopan = DataAnalyst("kaopan", "kako company", "Google Sheets, SQL, R, looker studio, Python")
+print(kaopan.name, kaopan.company, kaopan.skill)
+
+## Output
+kaopan kako company Google Sheets, SQL, R, looker studio, Python
+
+## call method all class data analyst
+kaopan.hello()
+kaopan.work1()
+kaopan.work2()
+kaopan.mydream()
+
+## output method
+kaopan work at kako company and my skill is Google Sheets, SQL, R, looker studio, Python
+I'm still working on SQL
+I'm create visualization on looker studio
+I want to be the one who learns endlessly.
