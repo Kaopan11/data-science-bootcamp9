@@ -1,0 +1,38 @@
+# import module
+from requests import get
+from time import sleep
+import csv
+
+url = "https://swapi.py4e.com/api/people/"
+
+# write loop
+for i in range(5):
+    index = i + 1
+    new_url = (f"{url}{index}")
+    resp = get(new_url).json()
+    name = resp["name"]
+    height = resp["height"]
+    mass = resp["mass"]
+    gender = resp["gender"] if resp["gender"] != "n/a" else "robot"
+    homeworld = resp["homeworld"]
+    print(name, height, mass, gender, homeworld)
+    sleep(1) # ใช้ในการ delay output เพื่อป้องกัน server ล่ม (กรณีเป็น Public API)
+
+# create column_name and input data
+col_names = ["name", "height", "mass", "gender", "homeworld"]
+
+starwar_data = [
+    ["Luke Skywalker", 172, 77, "male", "https://swapi.py4e.com/api/planets/1/"],
+    ["C-3PO", 167, 75, "robot", "https://swapi.py4e.com/api/planets/1/"],
+    ["R2-D2", 96, 32, "robot", "https://swapi.py4e.com/api/planets/8/"],
+    ["Darth Vader", 202, 136, "male", "https://swapi.py4e.com/api/planets/1/"],
+    ["Leia Organa", 150, 49, "female", "https://swapi.py4e.com/api/planets/2/"],
+]
+
+# use with open in build a new file
+# "w" is write a new file
+# "r" is read file
+with open("starwar.csv", "w") as  file:
+    writer = csv.writer(file)
+    writer.writerow(col_names) # writerow แบบไม่มี s คือการ write header
+    writer.writerows(starwar_data) # writerows แบบมี s คือการ  write data
