@@ -53,6 +53,7 @@ actual_churn <- prep_data[[2]]$churn
 ##find error values 
 test_accuracy <- mean(pred_churn == actual_churn)
 
+
 ## Output
 > model
 Generalized Linear Model 
