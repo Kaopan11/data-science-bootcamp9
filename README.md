@@ -1,6 +1,6 @@
 # My Portfolio Data Analyst
 
-## Projects01 - Google Sheets
+## Projects 01 - Google Sheets
 - Conditional Formatting
 - Project Dynamic Query
 - Enriching Our Data with VLOOKUP
@@ -9,19 +9,22 @@
 - Project - Sparkline Basics
 - Project - Google Translate
 
-## Projects02 - SQL Database
+## Projects 02 - SQL Database
 - Projects Pizza Restaurant
 
-## Projects03 - Programming Foundation
+## Projects 03 - Programming Foundation
 - Projects Rock, paper, scissors Game
 - Projects Pizza_Chatbot
 
-## Projects04 - Data Transformation
+## Projects 04 - Data Transformation
 - Projects Ask 5 questions about this dataset(flights)
 - Projects Build Database On PostgreSQL server by use pizza restaurant
 
-## Projects05 - Data Visualization
+## Projects 05 - Data Visualization
 - Projects Build Rmarkdown 5 ggplot charts
 - Projects Build mini dashboard too Google Sheets Use Free Fire vs. PubG Dataset
 
+## Projects 06 - Looker Studio and Tableau Public Dashboard 
+- Projects Netflix stock price report ( Looker Studio )
+- Projects Ramen Ratings in Japan ( Tableau Pubic )
 
