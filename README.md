@@ -37,4 +37,7 @@
 - Projects Create class Data Analyst
 
 ## Projects 09 - Essential Python for Data Analyst
-- 
+- Projects ATM
+- Projects star wars API
+- Projects rick and morty API
+- Projects train and test model logistic regression ( sklearn Dataset )
