@@ -1,0 +1,131 @@
+## install library
+library(tidyverse)
+library(caret)
+library(mlbench)
+library(MLmetrics)
+
+## read churn.csv
+churn <- read.csv("churn.csv")
+
+## 1. spit data
+n <- nrow(churn)
+train_id <- sample(1:n, 0.8*n)
+train_data <- churn[train_id, ]
+test_data <- churn[-train_id, ]
+
+## check nrows train_data and test_data
+nrow(train_data)
+nrow(test_data)
+
+## build function
+train_test_split <- function(data) {
+  set.seed(42)
+  n <- nrow(churn)
+  train_id <- sample(1:n, 0.8*n)
+  train_data <- churn[train_id, ]
+  test_data <- churn[-train_id, ]
+  return(list(train_data, test_data) ) 
+}
+
+## print train_test_split 
+train_test_split(churn)
+
+## call function
+prep_data <- train_test_split(churn)
+
+## check prep_data
+prep_data[[1]]
+prep_data[[2]]
+
+## 2.train model
+set.seed(42)
+ctrl <- trainControl(method = "cv", 
+                     number = 5,
+                     ## pr = precision + recall
+                     summaryFunction = prSummary,
+                     classProbs = TRUE)
+
+knn_model <- train(churn ~ .,
+                     data = prep_data[[1]],
+                     method = "knn",
+                     metric = "Recall",
+                     trControl = ctrl)
+
+## print model
+knn_model
+
+## 3. score model
+pred_churn_knn <- predict(knn_model, newdata = prep_data[[2]])
+
+## print pred_churn_knn
+pred_churn_knn
+
+## 4. evaluate model
+actual_churn <- prep_data[[2]]$churn
+
+## print actual_churn
+actual_churn
+
+##find error values 
+mean(pred_churn_knn == actual_churn)
+
+## confusion matrix
+confusionMatrix(pred_churn_knn,
+                factor(actual_churn),
+                positive = "Yes",
+                mode = "prec_recall")
+
+table(actual_churn, pred_churn_knn, dnn = c("actual", "preds"))
+
+
+## Output:
+> knn_model
+k-Nearest Neighbors 
+
+4000 samples
+  17 predictor
+   2 classes: 'No', 'Yes' 
+
+No pre-processing
+Resampling: Cross-Validated (5 fold) 
+Summary of sample sizes: 3200, 3200, 3201, 3199, 3200 
+Resampling results across tuning parameters:
+
+  k  AUC        Precision  Recall     F        
+  5  0.3501846  0.8970585  0.9808021  0.9370530
+  7  0.4544144  0.8950811  0.9874941  0.9390059
+  9  0.5264747  0.8948052  0.9895281  0.9397729
+
+Recall was used to select the optimal model using the largest value.
+The final value used for the model was k = 9.
+
+
+> confusionMatrix(pred_churn_knn,
++                 factor(actual_churn),
++                 positive = "Yes",
++                 mode = "prec_recall")
+Confusion Matrix and Statistics
+
+          Reference
+Prediction  No Yes
+       No  846 110
+       Yes   9  35
+                                          
+               Accuracy : 0.881           
+                 95% CI : (0.8593, 0.9004)
+    No Information Rate : 0.855           
+    P-Value [Acc > NIR] : 0.00965         
+                                          
+                  Kappa : 0.3248          
+                                          
+ Mcnemar's Test P-Value : < 2e-16         
+                                          
+              Precision : 0.7955          
+                 Recall : 0.2414          
+                     F1 : 0.3704          
+             Prevalence : 0.1450          
+         Detection Rate : 0.0350          
+   Detection Prevalence : 0.0440          
+      Balanced Accuracy : 0.6154          
+                                          
+       'Positive' Class : Yes
