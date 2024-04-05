@@ -31,3 +31,7 @@
 ## Projects 07 - Essential machine learning for Data Analyst
 - Projects train and test model logistic regression ( churn Dataset ) in R
 - Projects train and test model k-Nearest Neighbors ( churn Dataset ) in R
+
+## Projects 08 - Python Programming
+- Projects Game Pao Ying Chub
+- Projects Create class Data Analyst
