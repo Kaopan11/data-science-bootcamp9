@@ -13,8 +13,8 @@
 - Projects Pizza Restaurant
 
 ## Projects 03 - Programming Foundation
-- Projects Rock, paper, scissors Game
-- Projects Pizza_Chatbot
+- Projects Rock, paper, scissors Game in R
+- Projects Pizza_Chatbot in R
 
 ## Projects 04 - Data Transformation
 - Projects Ask 5 questions about this dataset(flights)
@@ -27,4 +27,8 @@
 ## Projects 06 - Looker Studio and Tableau Public Dashboard 
 - Projects Netflix stock price report ( Looker Studio )
 - Projects Ramen Ratings in Japan ( Tableau Pubic )
+
+## Projects 07 - Essential machine learning for Data Analyst
+- 
+- 
 
