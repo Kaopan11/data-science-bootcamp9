@@ -1,0 +1,48 @@
+# import module
+from requests import get
+from time import sleep
+import csv
+
+url_1 = "https://rickandmortyapi.com/api/character/"
+response = get(url_1)
+
+# print response
+# 200 = ok
+print(response.status_code)
+
+# write loop
+for i in range(10):
+    index = i + 1
+    new_url_1 = (f"{url_1}{index}")
+    resp_1 = get(new_url_1).json()
+    name = resp_1["name"]
+    status = resp_1["status"] if resp_1["status"] != "unknown" else "disappeared"
+    species = resp_1["species"]
+    gender = resp_1["gender"]
+    print(name, status, species, gender)
+    sleep(1)
+
+# create column_name and input data
+col_names_1 = ["name", "status", "species", "gender"]
+
+rickandmorty_data = [
+    ["Rick Sanchez", "Alive", "Human",  "Male"],
+    ["Morty Smith", "Alive", "Human", "Male"],
+    ["Summer Smith", "Alive", "Human", "Female"],
+    ["Beth Smith",  "Alive",  "Human", "Female"],
+    ["Jerry Smith", "Alive",  "Human",  "Male"],
+    ["Abadango Cluster Princess", "Alive", "Alien", "Female"],
+    ["Abradolf Lincler", "disappeared ", "Human", "Male"] ,
+    ["Adjudicator", "Rick Dead", "Human", "Male"],
+    ["Agency Director", "Dead", "Human", "Male"],
+    ["Alan Rails", "Dead", "Human", "Male"]
+]
+
+# convert to csv file
+# use with open in build a new file
+# "w" is write a new file
+# "r" is read file
+with open("rick&morty.csv", "w") as file:
+    writer = csv.writer(file)
+    writer.writerow(col_names_1) # writerow แบบไม่มี s คือการ write header
+    writer.writerows(rickandmorty_data) # writerows แบบมี s คือการ  write data
