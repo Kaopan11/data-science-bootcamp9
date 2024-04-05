@@ -1,0 +1,73 @@
+## train and test Model logistic regression churn Dataset
+churn <- read.csv("churn.csv")
+## 1. split data
+n <- nrow(churn)
+train_id <- sample(1:n, 0.8*n)
+train_data <- churn[train_id, ]
+test_data <- churn[-train_id, ]
+
+## check nrows train_data and test_data
+nrow(train_data)
+nrow(test_data)
+
+## build function
+train_test_split <- function(data) {
+  set.seed(42)
+  n <- nrow(churn)
+  train_id <- sample(1:n, 0.8*n)
+  train_data <- churn[train_id, ]
+  test_data <- churn[-train_id, ]
+  return(list(train_data, test_data) ) 
+}
+
+## print train_test_split 
+train_test_split(churn)
+
+## call function
+prep_data <- train_test_split(churn)
+
+## check prep_data
+prep_data[[1]]
+prep_data[[2]]
+
+## 2.train model
+model <- train(churn ~ accountlength + 
+                       internationalplan +
+                       voicemailplan +
+                       numbervmailmessages,
+                       data = prep_data[[1]],
+                       method = "glm")
+
+## print model
+model
+
+## 3. score model
+pred_churn <- predict(model, newdata = prep_data[[2]])
+
+## print pred_churn
+pred_churn
+
+## 4. evaluate model
+actual_churn <- prep_data[[2]]$churn
+
+##find error values 
+test_accuracy <- mean(pred_churn == actual_churn)
+
+## Output
+> model
+Generalized Linear Model 
+
+4000 samples
+   4 predictor
+   2 classes: 'No', 'Yes' 
+
+No pre-processing
+Resampling: Bootstrapped (25 reps) 
+Summary of sample sizes: 4000, 4000, 4000, 4000, 4000, 4000, ... 
+Resampling results:
+
+  Accuracy  Kappa     
+  0.854919  0.04574439
+
+> test_accuracy
+[1] 0.848
