@@ -35,3 +35,6 @@
 ## Projects 08 - Python Programming
 - Projects Game Pao Ying Chub
 - Projects Create class Data Analyst
+
+## Projects 09 - Essential Python for Data Analyst
+- 
